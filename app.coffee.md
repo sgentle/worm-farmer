@@ -78,6 +78,7 @@ We need a unique ID for later. The chapter numbers aren't necessarily unique (th
         n = 1
         while ids[id]
           id = "chapter#{arcNum}.#{chapterNum}-#{n++}"
+        ids[id] = true
 
 Add our chapter object.
 
