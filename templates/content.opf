@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package xmlns="http://www.idpf.org/2007/opf" unique-identifier="BookID" version="2.0">
+    <metadata xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:opf="http://www.idpf.org/2007/opf">
+        <dc:title>Worm - A Web Serial</dc:title>
+        <dc:language>en</dc:language>
+        <dc:creator opf:role="aut">wildbow</dc:creator>
+        <dc:publisher>parahumans.wordpress.com</dc:publisher>
+        <dc:identifier id="BookID" opf:scheme="UUID">8d0076a0-2cfe-11e3-aa6e-0800200c9a66</dc:identifier>
+    </metadata>
+    <manifest>
+        <item id="ncx" href="toc.ncx" media-type="application/x-dtbncx+xml"/>
+        <item id="title_page.xhtml" href="title_page.xhtml" media-type="application/xhtml+xml"/>
+        <% for arcName, arc of @arcs: %>
+        <item id="<%= arc.id %>" href="<%= arc.path %>" media-type="application/xhtml+xml"/>
+        <% for chapterName, chapter of arc.chapters: %>
+        <item id="<%= chapter.id %>" href="<%= chapter.path %>" media-type="application/xhtml+xml"/>
+        <% end %>
+        <% end %>
+    </manifest>
+    <spine toc="ncx">
+        <itemref idref="title_page.xhtml"/>
+        <% for arcName, arc of @arcs: %>
+        <itemref idref="<%= arc.id %>"/>
+        <% for chapterName, chapter of arc.chapters: %>
+        <itemref idref="<%= chapter.id %>"/>
+        <% end %>
+        <% end %>
+    </spine>
+</package>
